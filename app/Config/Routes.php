@@ -25,7 +25,7 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // if we false this they can't to do work becoz they havn't define 
 // if you want to creat application so false the route becoz set own routes for application. 
-$routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -36,10 +36,11 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->add('about','page::about');
-$routes->add('contact','page::contact');
+$routes->get('about','page::about');
+// $routes->get('contact','page::contact');
+$routes->match(['get','post'],'contact','page::contact');
 // own routes set for the page....
-$routes->add('page/about','page::about');
+$routes->get('page/about','page::about');
 // to set routes as you want to remove controller form the main page.
 // $routes->add('about','page::about');
 //we can also put any type of parameter in the routes which show in the main page..

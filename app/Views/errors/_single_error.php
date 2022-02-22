@@ -1,0 +1,1 @@
+<p class=" help-block alert alert-danger"><?php echo esc($error) ?></p> 

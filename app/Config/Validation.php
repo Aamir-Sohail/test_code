@@ -25,6 +25,8 @@ class Validation
         FileRules::class,
         CreditCardRules::class,
     ];
+    
+    
 
     /**
      * Specifies the views that are used to display the
@@ -35,6 +37,8 @@ class Validation
     public $templates = [
         'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
+        'my_list' => 'errors/_list_error', 
+        'my_single' => 'errors/_single_error',
     ];
 
     //--------------------------------------------------------------------

@@ -1,5 +1,5 @@
 <?php
-
+use CodeIgniter\Config\Services;
 /**
  * The goal of this file is to allow developers a location
  * where they can overwrite core procedural functions and

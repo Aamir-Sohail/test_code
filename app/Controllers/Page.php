@@ -1,28 +1,55 @@
 <?php namespace App\Controllers;
 
 use CodeIgniter\Controller;
-
 class Page extends BaseController{
-
-   public function about(){
+// protected $helpers = ['form'];
+    public function about(){
        $data =[
            'name'=> 'Aamir Sohail',
             'title'=> 'About us',
+       ];
 
-       ]; 
-       echo view('Template/header', $data);
-       echo view('about');
-       echo view('Template/footer');
-
+       echo view('about', $data);
    }
    public function contact(){
+       $email =\Config\Services::email();
+          if($this->request->getMethod()== 'post'){
+            if (! $this->validate([
+                'email' => 'required|valid_email',
+                'name' => 'required',
+                'message' => 'required|min_length[50]'
+            ])){
+                $validator = $this->validator;
+                if(!$validator->hasError('email')){
+                    $email->setFrom($this->request->getPost('email'));
+                    $email->setTo('admin@admin.com');
+                    $email->setSubject($this->request->getPost('name'));
+                    $email->setMessage($this->request->getPost('message'));
+                    $email->send();
+                }
+      
+            }
+          }else{
     $data =[
         'email'=> 'admin@gmail.com',
         'title'=> 'contact us',
+        'validator' => isset($validator) ? $validator : null,
+
+        'c_f' =>[
+   
+            'form_open' =>form_open('/contact'),
+
+            'email'=> form_input(['type'=>'email','class'=>'form-control','name'=>'email', 'value'=>$this->request->getPost('name')]),
+
+            'name'=> form_input(['type'=>'text','class'=>'form-control','name'=>'name','value'=>$this->request->getPost('email')]),
+             
+            'message'=> form_textarea(['type'=>'text','class'=>'form-control','name'=>'message','value'=>$this->request->getPost('message')]),
+
+            
+        ],
     ]; 
-    echo view('Template/header', $data);
-    echo view('contact');
-    echo view('Template/footer');
+}
+
 
    }
 

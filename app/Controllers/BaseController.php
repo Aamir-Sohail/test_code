@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Config\Database;
+use Config\Services;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -35,8 +37,8 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
-
+    protected $helpers = ['form'];
+    protected $session =  null;
     /**
      * Constructor.
      */
@@ -48,5 +50,8 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+        $this->db =Database::connect();
+        $this->session= Services::session();
+
     }
 }
