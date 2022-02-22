@@ -53,9 +53,17 @@ class Page extends BaseController{
 
    }
 
+#call the login 
+public function login(){
+ return view('login');
+
+}
 
 
-
+public function register(){
+    return view('register');
+   
+   }
     //this is used for the publicily used to show on the page..
 //     public function index(){
 //         // echo "WellCome to my page"; 

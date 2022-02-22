@@ -62,12 +62,14 @@ $routes->get('page/about','page::about');
 // $routes->add('about','page::about');
 // $routes->get('about/(:num)', 'page::about');  
 
-// $routes->add('help' ,function(){
+// $routes->add('help' ,function(){s
 //           echo "Help will be Provided";
 //     });        
 
 //  });
-
+#routes for login page
+$routes->resource('user');
+// $routes->get('register', 'Page::register');
 
 /*
  * --------------------------------------------------------------------
