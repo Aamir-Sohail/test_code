@@ -19,5 +19,13 @@ class UserModel extends Model {
     public function transBegin(){
         return $this->db->transBegin();
     }
+    public function transRollback()
+    {
+        return $this->db->transRollback();
+    }
      
+    public function transCommit()
+    {
+        return $this->db->transCommit();
+    }
 }

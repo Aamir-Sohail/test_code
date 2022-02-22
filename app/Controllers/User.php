@@ -28,19 +28,24 @@ class User extends BaseController
         $userModel =new UserModel();
         $profileModel = new ProfilesModel();  
          $userModel->transBegin();
-         if($userModel->insert($this->request->getPost())){
+         if(!$userModel->insert($this->request->getPost())){
              $this->session->setFlashData('errors',$userModel
              ->errors());
-             return redirect()->to('register'); 
+             return redirect()->to('register')->withInput(); 
          }  
-       if  (!$profileModel->insert(['user_id' =>$userModel->insertID()])){
+         $data=[
+             'user_id' =>$userModel->insertID(),
+             'name' =>$this->request->getPost('name'),
+                 
+         ];
+       if  (!$profileModel->insert($data)){
            $userModel->transRollBack();
            $this->session->setFlashData('errors',$profileModel
            ->errors());
            return redirect()->to('register'); 
        }
        $userModel->transCommit();
-       $this->session->setFlashData('message',"Use Registered Successfully!");
+       $this->session->setFlashData('message',"User Registered Successfully!");
        return redirect()->to('login'); 
     
     }

@@ -68,8 +68,9 @@ $routes->get('page/about','page::about');
 
 //  });
 #routes for login page
-$routes->resource('user');
-// $routes->get('register', 'Page::register');
+// $routes->resource('user');
+$routes->get('register', 'Page::register');
+$routes->get('login', 'Page::login');
 
 /*
  * --------------------------------------------------------------------
