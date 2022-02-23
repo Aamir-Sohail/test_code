@@ -38,7 +38,7 @@ class Database extends Config
         'database' => 'code-test',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
-        'pConnect' => false,
+        'pConnect' => true,
         'DBDebug'  => (ENVIRONMENT !== 'production'), 
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',

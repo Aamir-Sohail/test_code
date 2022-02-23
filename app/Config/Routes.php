@@ -71,6 +71,8 @@ $routes->get('page/about','page::about');
 // $routes->resource('user');
 $routes->get('register', 'Page::register');
 $routes->get('login', 'Page::login');
+$routes->post('register', 'User::create');
+$routes->post('login', 'Page::login');
 
 /*
  * --------------------------------------------------------------------

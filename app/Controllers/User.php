@@ -17,7 +17,7 @@ class User extends BaseController
     
     public function index()
     {
-        echo "index";
+        return redirect()->to('/login');
     }
     public function new()
     {
@@ -29,8 +29,7 @@ class User extends BaseController
         $profileModel = new ProfilesModel();  
          $userModel->transBegin();
          if(!$userModel->insert($this->request->getPost())){
-             $this->session->setFlashData('errors',$userModel
-             ->errors());
+             $this->session->setFlashData('errors',$userModel->errors());
              return redirect()->to('register')->withInput(); 
          }  
          $data=[
@@ -40,8 +39,7 @@ class User extends BaseController
          ];
        if  (!$profileModel->insert($data)){
            $userModel->transRollBack();
-           $this->session->setFlashData('errors',$profileModel
-           ->errors());
+           $this->session->setFlashData('errors',$profileModel->errors());
            return redirect()->to('register'); 
        }
        $userModel->transCommit();
