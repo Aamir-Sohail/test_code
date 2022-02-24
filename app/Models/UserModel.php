@@ -2,6 +2,7 @@
 
 use CodeIgniter\Model;
 use CodeIgniter\Models;
+use Prophecy\Exception\Doubler\ReturnByReferenceException;
 
 class UserModel extends Model {
     protected $primaryKey = "id";
@@ -16,6 +17,7 @@ class UserModel extends Model {
         'pass_confirm' => 'required_with[password]|matches[password]',
     ];
     protected $validationMessages = [];
+    protected $beforeInsert = ['hashPassword'];
     public function transBegin(){
         return $this->db->transBegin();
     }
@@ -27,5 +29,28 @@ class UserModel extends Model {
     public function transCommit()
     {
         return $this->db->transCommit();
+    }
+    public function hashPassword($data)
+    {
+        $data['data']['password'] =password_hash($data['data']['password'],PASSWORD_DEFAULT);       
+        return $data;
+    }
+
+    public function authenticate($user){
+ $password = $user['password'];   
+ $user =$this->getWhere(['email' =>$user['email']]);
+    if($user->resultID->num_rows>0){
+        $user = $user->getRow(); 
+        // $verfiy = password_verify($password , $user->password);
+     
+        $verfiy = $password;  
+        if($verfiy){
+            return $user;
+        }else{
+            return false;
+        }
+    }
+    return false;
+
     }
 }
