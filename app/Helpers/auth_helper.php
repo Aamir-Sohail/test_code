@@ -2,9 +2,9 @@
 
 use Config\Services;
 function LoggedIn(){
-$session = Services::session();
- $user =$session->get('user')?? null;
- if($user AND $user['isLoggedIn']){
+
+ $user =session()->get('user');
+ if($user and $user['isLoggedIn']){
 
  
  return true;
@@ -12,6 +12,13 @@ $session = Services::session();
  return false;
 }
 
-
+function allowedEdit($usernmae)
+{
+  $user =session()->get('user');
+  if($user['usernmae'] ===$usernmae){
+      return true;
+  }
+  return false;
+}
 
 ?>

@@ -71,4 +71,5 @@ class User extends BaseController
         return view('profiles', ['user']);
 
     }
+  
 }

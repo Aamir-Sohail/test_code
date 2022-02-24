@@ -76,7 +76,7 @@ $routes->get('register', 'User::register',['filter'=>'guest']);
 $routes->post('login', 'User::login',['filter'=>'guest']);
 $routes->get('home', 'Home::index', ['filter'=>'isLoggedIn']);
 $routes->get('logout', 'User::logout' , ['filter'=>'isLoggedIn']);
-$routes ->get('user/(:num)/profile','User::profile/$1');
+$routes ->get('user/(:num)/profile','User::profile/$1' );
 
 
 

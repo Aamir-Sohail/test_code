@@ -36,6 +36,7 @@ class Home extends BaseController
                 // call the model in home Page......
                  
                     $userModel =new UserModel();
+                    
 
                     // insertion of data
                     //  $data =[
@@ -66,6 +67,9 @@ class Home extends BaseController
                 //     helper('text');
                 //    $word = word_censor('welcome to codeigniter 4 tutorial in urdu and hindi',['urdu','hindi']);
                 //    echo $word; exit;
+            
+
+
                     echo view('welcome_message');
     } 
 }

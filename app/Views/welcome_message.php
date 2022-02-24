@@ -208,15 +208,15 @@
 				<button onclick="toggleMenu();">&#9776;</button>
 			</li>
 			<li class="menu-item hidden"><a href="home">Home</a></li>
-			<?php if(!LoggedIn()):?>
+			
 			<li class="menu-item hidden"><a href="register">Register</a></li>
 			</li>
-			<?php else:?>
+			
 			<li class="menu-item hidden"><a href="login">Login</a></li>
 			<li class="menu-item hidden"><a
 					href="logout" >Logout</a>
 			</li>
-			<?php endif ;?>
+			
 		</ul>
 	</div>
 

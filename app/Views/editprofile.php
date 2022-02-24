@@ -44,20 +44,21 @@
           <div class="col-sm-9">
             <ul class="nav nav-tabs">
                 <div class="col-sm-1">
-                <li class="active"><a data-toggle="tab" href="profile">  Profile  </a></li></div>
+                <li class="active"><a  href="profiles">  Profile  </a></li></div>
                 <div class="col-sm-2">
-                <li><a data-toggle="tab" href="editprofile">Edit Profile</a></li></div>
+                <li><a href="editprofile">Edit Profile</a></li></div>
                 <div class="col-sm-4">
-                <li><a data-toggle="tab" href="change_password">Change Password</a></li></div>
+                <li><a  href="change_password">Change Password</a></li></div>
               </ul>
           
 
             <div class="tab-content">
             <div class="tab-pane active" id="editprofile">
-                <hr>
+
+                <hr/>
                 <h2>Edit Profile</h2>
 </hr>
-
+                    <?php if(allowedEdit($username)):?>
                   <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
                           
@@ -108,6 +109,9 @@
                             </div>
                       </div>
               	</form>
+                  <?php   else: ?>
+                    <h2>YOu are Not Login</h2>
+                  <?php endif; ?>
             </div>
           </div>
           </div>

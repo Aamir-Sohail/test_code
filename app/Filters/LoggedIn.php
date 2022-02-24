@@ -11,7 +11,7 @@ use DeepCopy\Filter\Filter;
 class LoggedIn implements FilterInterface
 {
     // public function before(RequestInterface  $request)
- public function before(RequestInterface $request, $arguments = null)
+     public function before(RequestInterface $request, $augrements =null)
      {
         
         $session = Services::session();
@@ -31,7 +31,7 @@ class LoggedIn implements FilterInterface
      }
     
     
-    public function after(RequestInterface $request ,ResponseInterface $response , $arguments = null)
+    public function after(RequestInterface $request ,ResponseInterface $response, $augrements =null)
     {
            
     }

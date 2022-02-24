@@ -8,10 +8,10 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
 use DeepCopy\Filter\Filter;
 
-class LoggedIn implements FilterInterface
+class GuestFilter implements FilterInterface
 {
     // public function before(RequestInterface  $request)
-    public function before(RequestInterface $request, $arguments = null)
+     public function before(RequestInterface $request,$arguments = null)
      {
         
         $session = Services::session();
